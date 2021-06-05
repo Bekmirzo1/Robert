@@ -1007,6 +1007,15 @@ h1 {
     transition: background-color 0.3s ease-in 0s;
   }
 
+  .menu__link:hover {
+    background-color: #5221e6;
+    opacity: 0.5;
+  }
+
+  .menu__link.opened:hover {
+    opacity: 1;
+  }
+
   .more p {
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;

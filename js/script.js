@@ -108,9 +108,11 @@ if (menuLinks.length > 0) {
         });
     }
 }
+// * Выделение пунктов меню при прокрутке
 const blocks = document.querySelectorAll('.block');
 const scrollLinks = document.querySelectorAll('.menu__link[data-scroll]');
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', scrollColor);
+function scrollColor() {
     let current;
     for (let index = 0; index < blocks.length; index++) {
         const block = blocks[index];
@@ -126,21 +128,25 @@ window.addEventListener('scroll', () => {
             scrollLink.classList.add('opened')
         }
     }
-});
-
+}
+scrollColor();
 // *Сменяем цвет header при скролле
 if (document.documentElement.clientWidth > 991.98) {
     const hello = document.querySelector('.hello');
     const header = document.querySelector('.header');
-    window.addEventListener('scroll', function () {
-        const headerValue = header.getBoundingClientRect().bottom + window.pageYOffset;
-        const helloValue = hello.getBoundingClientRect().bottom + window.pageYOffset;
-        if (headerValue >= helloValue) {
-            header.classList.add('header_b')
-        } else {
-            header.classList.remove('header_b')
+    if (hello) {
+        window.addEventListener('scroll', headerColor);
+        function headerColor() {
+            const headerValue = header.getBoundingClientRect().bottom + window.pageYOffset;
+            const helloValue = hello.getBoundingClientRect().bottom + window.pageYOffset;
+            if (headerValue >= helloValue) {
+                header.classList.add('header_b')
+            } else {
+                header.classList.remove('header_b')
+            }
         }
-    });
+        headerColor();
+    }
 }
 
 

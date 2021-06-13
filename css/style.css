@@ -329,6 +329,15 @@ a {
   display: none;
 }
 
+body._pc .menu__link:hover {
+  background-color: #5221e6;
+  opacity: 0.5;
+}
+
+body._pc .menu__link.opened:hover {
+  opacity: 1;
+}
+
 html,
 body {
   color: #fff;
@@ -627,10 +636,6 @@ h1 {
   padding-bottom: 12px;
 }
 
-.brands {
-  margin-bottom: 120px;
-}
-
 .brands__item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -668,6 +673,10 @@ h1 {
 
 .brands__brand._icon-formula {
   font-size: 21px;
+}
+
+.projects__content {
+  padding-top: 120px;
 }
 
 .projects__columns {
@@ -941,6 +950,18 @@ h1 {
   height: 75px;
   background-color: #5221e6;
   color: #fff;
+  -webkit-transition: all 0.3s linear 0s;
+  -o-transition: all 0.3s linear 0s;
+  transition: all 0.3s linear 0s;
+}
+
+.contact__btn:active {
+  -webkit-transform: translate(0, 3px);
+      -ms-transform: translate(0, 3px);
+          transform: translate(0, 3px);
+  -webkit-appearance: unset;
+     -moz-appearance: unset;
+          appearance: unset;
 }
 
 .footer {
@@ -1002,18 +1023,9 @@ h1 {
 
   .menu__link {
     padding: 32px 24px;
-    -webkit-transition: background-color 0.3s ease-in 0s;
-    -o-transition: background-color 0.3s ease-in 0s;
-    transition: background-color 0.3s ease-in 0s;
-  }
-
-  .menu__link:hover {
-    background-color: #5221e6;
-    opacity: 0.5;
-  }
-
-  .menu__link.opened:hover {
-    opacity: 1;
+    -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s;
+    transition: all 0.3s ease-in 0s;
   }
 
   .more p {
@@ -1159,18 +1171,6 @@ h1 {
 
   .contact__half_1 {
     margin-right: 24px;
-  }
-
-  .contact__btn {
-    -webkit-transition: all 0.3s linear 0s;
-    -o-transition: all 0.3s linear 0s;
-    transition: all 0.3s linear 0s;
-  }
-
-  .contact__btn:active {
-    -webkit-transform: translate(0, 3px);
-        -ms-transform: translate(0, 3px);
-            transform: translate(0, 3px);
   }
 
   .contact__btn:hover {
@@ -1422,10 +1422,6 @@ h1 {
     margin-bottom: 48px;
   }
 
-  .brands {
-    margin-bottom: 80px;
-  }
-
   .brands__items {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1433,6 +1429,10 @@ h1 {
 
   .projects {
     margin-bottom: 80px;
+  }
+
+  .projects__content {
+    padding-top: 80px;
   }
 
   .projects__column_h {
@@ -1696,12 +1696,12 @@ h1 {
     margin-bottom: 16px;
   }
 
-  .brands {
-    margin-bottom: 64px;
-  }
-
   .projects {
     margin-bottom: 70px;
+  }
+
+  .projects__content {
+    padding-top: 64px;
   }
 
   .projects__column-img {

@@ -469,10 +469,6 @@ h1 {
   padding-bottom: 84px;
 }
 
-.hello__content {
-  height: 90vh;
-}
-
 .hello__img {
   display: none;
 }
@@ -1043,6 +1039,10 @@ h1 {
     margin-right: 40px;
   }
 
+  .hello__column {
+    background-image: url(../img/robert.png);
+  }
+
   .experience__columns {
     margin-right: -24px;
   }
@@ -1234,10 +1234,6 @@ h1 {
     background-image: -webkit-gradient(linear, left top, right top, color-stop(37.5%, transparent), color-stop(37.5%, #181823));
     background-image: -o-linear-gradient(left, transparent 37.5%, #181823 37.5%);
     background-image: linear-gradient(90deg, transparent 37.5%, #181823 37.5%);
-  }
-
-  .hello__column {
-    background-image: url(../img/robert.png);
   }
 
   .skillset__entire {
@@ -1624,13 +1620,8 @@ h1 {
     padding-top: 72px;
   }
 
-  .hello__content {
-    height: 100%;
-  }
-
   .hello__column {
     display: block;
-    background-image: inherit;
     background-size: auto;
     background-position: unset;
   }
@@ -1794,11 +1785,6 @@ h1 {
 }
 
 @media (max-width: 991.98px) and (min-width: 767.98px) {
-  .hello__column {
-    background-image: url(../img/robert2.png);
-    background-size: 52.74725% 100%;
-  }
-
   .sort__object {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1806,12 +1792,7 @@ h1 {
   }
 }
 
-@media (min-width: 991.98px) {
+@media (min-width: 767.98px) {
 
   .webp .hello__column { background-image: url(../img/robert.webp); }
-}
-
-@media (max-width: 991.98px) and (min-width: 767.98px) {
-
-  .webp .hello__column { background-image: url(../img/robert2.webp); }
 }

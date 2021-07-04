@@ -329,15 +329,6 @@ a {
   display: none;
 }
 
-body._pc .menu__link:hover {
-  background-color: #5221e6;
-  opacity: 0.5;
-}
-
-body._pc .menu__link.opened:hover {
-  opacity: 1;
-}
-
 html,
 body {
   color: #fff;
@@ -1024,17 +1015,6 @@ h1 {
     transition: all 0.3s ease-in 0s;
   }
 
-  .more p {
-    -webkit-transition: all 0.3s ease 0s;
-    -o-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-  }
-
-  .more p:hover {
-    color: blue;
-    border-bottom: none;
-  }
-
   .hello__content {
     margin-right: 40px;
   }
@@ -1121,11 +1101,6 @@ h1 {
     overflow: hidden;
   }
 
-  .projects__btn:hover {
-    background-color: #5221e6;
-    font-size: 120%;
-  }
-
   .about__content {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1137,24 +1112,11 @@ h1 {
 
   .sort__link {
     padding: 0px 16px;
-    cursor: pointer;
     margin-right: 24px;
   }
 
   .sort__link:last-child {
     margin-right: 0;
-  }
-
-  .sort__link:hover {
-    background-color: #5221e6;
-    opacity: 0.5;
-    -webkit-transition: all 0s ease 0s;
-    -o-transition: all 0s ease 0s;
-    transition: all 0s ease 0s;
-  }
-
-  .sort__link.opened:hover {
-    opacity: 1;
   }
 
   .contact__container {
@@ -1171,10 +1133,6 @@ h1 {
 
   .contact__half_1 {
     margin-right: 24px;
-  }
-
-  .contact__btn:hover {
-    opacity: 0.8;
   }
 
   .footer__block {
@@ -1216,6 +1174,24 @@ h1 {
 
   .footer__column:last-child {
     margin-right: 0;
+  }
+}
+
+@media (min-width: 767.98px) and (any-hover: hover) {
+  .sort__link {
+    cursor: pointer;
+  }
+
+  .sort__link:hover {
+    background-color: #5221e6;
+    opacity: 0.5;
+    -webkit-transition: all 0s ease 0s;
+    -o-transition: all 0s ease 0s;
+    transition: all 0s ease 0s;
+  }
+
+  .sort__link.opened:hover {
+    opacity: 1;
   }
 }
 
@@ -1789,6 +1765,37 @@ h1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+  }
+}
+
+@media (any-hover: hover) {
+  .menu__link:hover {
+    background-color: #5221e6;
+    opacity: 0.5;
+  }
+
+  .menu__link.opened:hover {
+    opacity: 1;
+  }
+
+  .more p {
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+  }
+
+  .more p:hover {
+    color: blue;
+    border-bottom: none;
+  }
+
+  .projects__btn:hover {
+    background-color: #5221e6;
+    font-size: 120%;
+  }
+
+  .contact__btn:hover {
+    opacity: 0.8;
   }
 }
 

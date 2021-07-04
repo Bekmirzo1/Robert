@@ -39,29 +39,7 @@ if (iconMenu) {
 }
 
 ;
-const isMobile = {
-    Android: function () {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function () {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function () {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function () {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function () {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: function () {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
-if (!isMobile.any()) {
-    document.body.classList.add('_pc')
-}
+
 // *Swiper
 const brandsContents = document.querySelectorAll('.brands__content');
 if (brandsContents.length > 0) {
@@ -124,7 +102,7 @@ if (menuLinks.length > 0) {
         const menuLink = menuLinks[index];
         menuLink.addEventListener('click', function (e) {
             const menuLink = e.target;
-            // ept В условии if мы смотрим является ли menuLink.dataset.goto не false(тоесть не пустой и не со значением 0 ). Смотрим  существуют ли элементы названия классов которых внутри menuLink.dataset.goto
+            // ept В условии if мы смотрим является ли menuLink.dataset.goto не false(тоесть не пустой и не со значением 0 ). Смотрим существуют ли элементы названия классов которых внутри menuLink.dataset.goto
             if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
                 const goToBlock = document.querySelector(menuLink.dataset.goto);
                 const goToBlockValue = goToBlock.getBoundingClientRect().top + pageYOffset - (document.querySelector('.header').offsetHeight);

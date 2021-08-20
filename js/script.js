@@ -1,14 +1,4 @@
 'use strict';
-// *ibg
-function ibg() {
-    let ibg = document.querySelectorAll(".ibg");
-    for (var i = 0; i < ibg.length; i++) {
-        if (ibg[i].querySelector('img')) {
-            ibg[i].style.backgroundImage = 'url(' + ibg[i].querySelector('img').getAttribute('src') + ')';
-        }
-    }
-}
-ibg();
 // *Эта функция проверяет поддерживается ли браузером формат изображения webp и если поддерживается, то эта функция добавляет из css-документа внутрь html-документа класс с изобажением формата webp
 function testWebP(callback) {
 
@@ -41,28 +31,25 @@ if (iconMenu) {
 ;
 
 // *Swiper
-const brandsContents = document.querySelectorAll('.brands__content');
-if (brandsContents.length > 0) {
-    for (let index = 0; index < brandsContents.length; index++) {
-        const brandsContent = brandsContents[index];
-        let mySwiper;
-        window.addEventListener('resize', mobileSlider);
-        function mobileSlider() {
-            if (document.documentElement.clientWidth >= 767 && brandsContent.dataset.mobile == 'true') {
-                mySwiper = new Swiper(brandsContent, {
-                    slidesPerView: 'auto',
-                    grabCursor: true,
-                });
-                brandsContent.dataset.mobile = 'false';
-            } else if (document.documentElement.clientWidth < 767) {
-                brandsContent.dataset.mobile = 'true';
-                if (brandsContent.classList.contains('swiper-container-initialized')) {
-                    mySwiper.destroy()
-                }
+const brandsContent = document.querySelector('.brands__content');
+if (brandsContent) {
+    let mySwiper;
+    function mobileSlider(e) {
+        if (e.matches) {
+            mySwiper = new Swiper(brandsContent, {
+                slidesPerView: 'auto',
+                grabCursor: true,
+                watchOverflow: true,
+            });
+        } else if (!e.matches) {
+            if (brandsContent.classList.contains('swiper-container-initialized')) {
+                mySwiper.destroy()
             }
         }
-        mobileSlider();
     }
+    const brandsMedia = window.matchMedia('(min-width: 991.98px)');
+    brandsMedia.addListener(mobileSlider);
+    mobileSlider(brandsMedia);
 }
 
 // * Фильтрация
@@ -144,7 +131,7 @@ function scrollColor() {
 scrollColor();
 
 // *Сменяем цвет header при скролле
-if (document.documentElement.clientWidth > 991.98) {
+if (window.matchMedia('(min-width: 991.98px)')) {
     const hello = document.querySelector('.hello');
     const header = document.querySelector('.header');
     if (hello) {

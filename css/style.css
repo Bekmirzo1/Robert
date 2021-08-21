@@ -373,7 +373,6 @@ h3 {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
-  padding-top: 120px;
 }
 
 ._container {
@@ -444,6 +443,10 @@ h3 {
   border-bottom: 1px solid #8491a0;
 }
 
+._lazy {
+  background: url(../img/loading.gif) center/50px no-repeat;
+}
+
 .hello {
   padding-top: 83px;
   padding-bottom: 84px;
@@ -470,6 +473,7 @@ h3 {
 
 .experience {
   margin-bottom: 144px;
+  padding-top: 120px;
 }
 
 .experience__title {
@@ -1379,10 +1383,6 @@ h3 {
 }
 
 @media (max-width: 991.98px) {
-  .page {
-    padding-top: 80px;
-  }
-
   ._container {
     margin: 0px 40px;
   }
@@ -1397,6 +1397,7 @@ h3 {
 
   .experience {
     margin-bottom: 104px;
+    padding-top: 80px;
   }
 
   .experience__column-title {
@@ -1611,10 +1612,6 @@ h3 {
     bottom: 50%;
   }
 
-  .page {
-    padding-top: 48px;
-  }
-
   ._container {
     max-width: none;
     margin: 0px 20px;
@@ -1649,6 +1646,7 @@ h3 {
 
   .experience {
     margin-bottom: 48px;
+    padding-top: 48px;
   }
 
   .experience__columns {

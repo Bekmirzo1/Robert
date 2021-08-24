@@ -681,13 +681,21 @@ h3 {
 }
 
 .projects__column-img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  display: block;
+  width: 100%;
   height: 620px;
+  overflow: hidden;
+  position: relative;
 }
 
 .projects__column-img img {
+  position: absolute;
   width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .projects__column-paaragraph {
@@ -771,6 +779,7 @@ h3 {
   position: relative;
   display: block;
   height: 640px;
+  overflow: hidden;
 }
 
 .dribble__img img {
@@ -867,19 +876,29 @@ h3 {
   transition: all 0.3s ease-out 0s;
 }
 
-.sort__column img {
+.sort__column {
   opacity: 0;
+  -webkit-transition: opacity 0.8s ease 0s;
+  -o-transition: opacity 0.8s ease 0s;
+  transition: opacity 0.8s ease 0s;
+}
+
+.sort__column img {
+  display: none;
+}
+
+.sort__column.show {
+  opacity: 1;
 }
 
 .sort__column.show img {
-  -webkit-transition: all 0.8s ease 0s;
-  -o-transition: all 0.8s ease 0s;
-  transition: all 0.8s ease 0s;
-  opacity: 1;
+  display: block;
 }
 
 .sort__img {
   height: 420px;
+  display: block;
+  overflow: hidden;
 }
 
 .sort__img img {
@@ -1828,9 +1847,49 @@ h3 {
     border-bottom: none;
   }
 
+  .projects__column-img img {
+    -webkit-transition: -webkit-transform 0.3s ease 0s;
+    transition: -webkit-transform 0.3s ease 0s;
+    -o-transition: transform 0.3s ease 0s;
+    transition: transform 0.3s ease 0s;
+    transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+  }
+
+  .projects__column-img img:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+
   .projects__btn:hover {
     background-color: #5221e6;
     font-size: 120%;
+  }
+
+  .dribble__img img {
+    -webkit-transition: -webkit-transform 0.3s ease 0s;
+    transition: -webkit-transform 0.3s ease 0s;
+    -o-transition: transform 0.3s ease 0s;
+    transition: transform 0.3s ease 0s;
+    transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+  }
+
+  .dribble__img img:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+
+  .sort__img img {
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+  }
+
+  .sort__img img:hover {
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
   }
 
   .contact__btn:hover {

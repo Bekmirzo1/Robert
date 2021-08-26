@@ -152,7 +152,7 @@ if (window.matchMedia('(min-width: 991.98px)')) {
 // * LazyLoading
 const lazyImages = document.querySelectorAll('img[data-lazy]');
 const windowHieght = document.documentElement.clientHeight;
-const lazyLimit = 10;
+const lazyLimit = 3;
 let lazyImagesPositions = [];
 
 window.addEventListener('scroll', lazyScroll);
@@ -174,7 +174,7 @@ if (lazyImages.length > 0) {
 // image lazy
 function lazyScrollCheck() {
 	let imgIndex = lazyImagesPositions.findIndex(
-		item => pageYOffset > item - windowHieght
+		item => pageYOffset > item - (windowHieght / lazyLimit)
 	);
 	if (imgIndex >= 0) {
 		if (lazyImages[imgIndex].dataset.lazy) {

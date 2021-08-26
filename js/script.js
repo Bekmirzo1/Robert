@@ -150,49 +150,50 @@ if (window.matchMedia('(min-width: 991.98px)')) {
 }
 
 // * LazyLoading
-const lazyImages = document.querySelectorAll('img[data-lazy]');
-const windowHieght = document.documentElement.clientHeight;
-const lazyLimit = 3;
-let lazyImagesPositions = [];
-
-window.addEventListener('scroll', lazyScroll);
-function lazyScroll() {
-	if (lazyImages.length > 0) {
-		lazyScrollCheck();
-	}
-}
+const lazyImages = document.querySelectorAll('img[data-src]');
 if (lazyImages.length > 0) {
-	for (let index = 0; index < lazyImages.length; index++) {
-		const lazyImage = lazyImages[index];
-		if (lazyImage.dataset.lazy) {
-			lazyImagesPositions.push(lazyImage.getBoundingClientRect().top + pageYOffset - (windowHieght / lazyLimit));
-			lazyScrollCheck();
-		}
-	}
-}
-
-// image lazy
-function lazyScrollCheck() {
-	let imgIndex = lazyImagesPositions.findIndex(
-		item => pageYOffset > item - (windowHieght / lazyLimit)
-	);
-	if (imgIndex >= 0) {
-		if (lazyImages[imgIndex].dataset.lazy) {
-			lazyImages[imgIndex].src = lazyImages[imgIndex].dataset.lazy;
-			lazyImages[imgIndex].removeAttribute('data-lazy');
-			if (lazyImages[imgIndex].previousElementSibling) {
-				const webp = lazyImages[imgIndex].previousElementSibling;
-				if (webp.tagName == 'SOURCE') {
-					const dataImgSrc = lazyImages[imgIndex].getAttribute('src').split('.');
-					if (dataImgSrc[1] !== 'svg') {
-						dataImgSrc[1] = 'webp'
-					}
-					const dataImgSrcWebp = dataImgSrc.join('.');
-					webp.setAttribute('srcset', dataImgSrcWebp);
-					webp.removeAttribute('data-lazyset');
-				}
+	const options = {
+		rootMargin: "0px 0px 50px 0px",
+		threshold: 0
+	};
+	const imageObserver = new IntersectionObserver(lazyImages => {
+		for (let index = 0; index < lazyImages.length; index++) {
+			const lazyImage = lazyImages[index];
+			if (lazyImage.isIntersecting) {
+				loadImage(lazyImage.target)
+				imageObserver.unobserve(lazyImage.target);
+			} else {
+				return;
 			}
 		}
-		delete lazyImagesPositions[imgIndex]
+	}, options);
+
+	function loadImage(image) {
+		if (image.dataset.src) {
+			image.src = image.dataset.src;
+			image.removeAttribute('data-src');
+			if (image.previousElementSibling) {
+				webpDelete(image)
+			}
+		}
 	}
+	function webpDelete(img) {
+		const webp = img.previousElementSibling;
+		if (webp.tagName == 'SOURCE') {
+			const dataImgSrc = img.getAttribute('src').split('.');
+			if (dataImgSrc[1] !== 'svg') {
+				dataImgSrc[1] = 'webp'
+			}
+			const dataImgSrcWebp = dataImgSrc.join('.');
+			webp.setAttribute('srcset', dataImgSrcWebp);
+			webp.removeAttribute('data-srcset');
+		}
+	}
+	lazyImages.forEach(image => {
+		if (image.getBoundingClientRect().top + pageYOffset > pageYOffset) {
+			imageObserver.observe(image);
+		} else {
+			loadImage(image);
+		}
+	});
 }

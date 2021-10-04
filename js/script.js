@@ -92,16 +92,17 @@ if (menuLinks.length > 0) {
             // ept В условии if мы смотрим является ли menuLink.dataset.goto не false(тоесть не пустой и не со значением 0 ). Смотрим существуют ли элементы названия классов которых внутри menuLink.dataset.goto
             if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
                 const goToBlock = document.querySelector(menuLink.dataset.goto);
-                const goToBlockValue = goToBlock.getBoundingClientRect().top + pageYOffset - (document.querySelector('.header').offsetHeight);
                 if (iconMenu.classList.contains('_active')) {
                     iconMenu.classList.remove('_active');
                     menuBody.classList.remove('_active');
                     document.body.classList.remove('_lock');
                 }
-                window.scrollTo({
-                    top: goToBlockValue,
-                    behavior: "smooth"
+                const moveTo = new MoveTo({
+                    tolerance: document.querySelector('.header').offsetHeight - 5,
+                    duration: 800,
+                    easing: 'easeOutQuart'
                 });
+                moveTo.move(goToBlock);
                 e.preventDefault();
             }
         });
